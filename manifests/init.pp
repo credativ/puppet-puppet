@@ -1,6 +1,6 @@
 class puppet (
     $provisioning_host = params_lookup('provisioning_host')
-    ) {
+    ) inherits puppet::params {
 
     # pson output breaks sometimes with hiera
     # see http://projects.puppetlabs.com/issues/13212
