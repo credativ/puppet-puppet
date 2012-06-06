@@ -4,15 +4,16 @@ class puppet {
   # pson output breaks sometimes with hiera
   # see http://projects.puppetlabs.com/issues/13212
   # therefore we enforce yaml here. maybe slower, but works
+  augeas { 'puppet.conf':
+    context => '/files/etc/puppet/puppet.conf',
+    changes => 'set agent/preferred_serialization_format yaml',
+  }
+
   augeas { 'agent_listener':
     context => '/files/etc/puppet/puppet.conf',
     changes => 'set agent/listen true',
   }
 
-  augeas { 'puppet.conf':
-    context => '/files/etc/puppet/puppet.conf',
-    changes => 'set agent/preferred_serialization_format yaml',
-  }
 
   file { '/etc/puppet/auth.conf':
     ensure  => present,
