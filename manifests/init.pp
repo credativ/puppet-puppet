@@ -1,5 +1,5 @@
 class puppet (
-    $provisioning_host = params_loookup('provisioning_host')
+    $provisioning_host = params_lookup('provisioning_host')
     ) {
 
     # pson output breaks sometimes with hiera
