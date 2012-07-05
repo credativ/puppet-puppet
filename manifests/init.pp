@@ -14,22 +14,9 @@ class puppet (
         context => '/files/etc/puppet/puppet.conf',
         changes => 'set agent/listen true',
     }
-
-    package { 'puppet':
-        ensure => '2.7.13-1~bpo60+1'
+    package { ['puppet/squeeze-backports', 'puppet-common/squeeze-backports']:
+            ensure  => present
     }
-    package { 'puppet-common':
-
-        ensure => '2.7.13-1~bpo60+1'
-    }
-
-    package { 'puppetmaster':
-        ensure => '2.7.13-1~bpo60+1'
-    }
-    package { 'puppetmaster-common':
-        ensure => '2.7.13-1~bpo60+1'
-    }
-   
 
     file { '/etc/puppet/auth.conf':
         ensure  => present,
